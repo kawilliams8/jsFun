@@ -617,13 +617,13 @@ const bossPrompts = {
     return result();
 
     // Annotation:
-    //Have two datasets, an obj of objs AND an array of objs
-    //Common thread is the bosses[each boss].name and the sidekicks[each sidekick].boss
-    //use Object.values to get an array of the bosses, than can be mapped for their names
-    //Iterate over the bames array with either Map or Reduce to make array of objs
-    //When looking at each boss, iterate over all the sidekicks to see if their .boss prop is === to the cur boss
-    //If so, add points to the acc
-    //Use the acc in the larger map's sidekickLoyalty points
+    // Have two datasets, an obj of objs AND an array of objs
+    // Common thread is the bosses[each boss].name and the sidekicks[each sidekick].boss
+    // use Object.values to get an array of the bosses, then can be mapped for their names
+    // Iterate over the names array with either Map or Reduce to make array of objs
+    // When looking at each boss, iterate over all the sidekicks to see if their .boss prop is === to the cur boss
+    // If so, add points to the acc
+    // Use the acc/points variable to add sidekickLoyalty points
   }
 };
 
@@ -661,11 +661,25 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = function heyNow() {
+      let allStars = [];
+      Object.values(constellations).forEach(constellation => {
+        constellation.stars.forEach(star => allStars.push(star));
+      })
+
+      return stars.filter(star => {
+        if (allStars.includes(star.name)) {
+          return star;
+        }
+      })
+    };
+    return result();
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with two datasets, an obj of obs AND an array of objs
+    // First, use Object.values to create an iterable array, then forEach through to push all the stars' names into the existing array
+    // Then, filter for the stars where the star.name is mentioned in the allStars array
+    // if mentioned, return the entire star obj
   },
 
   starsByColor() {
@@ -806,7 +820,7 @@ const dinosaurPrompts = {
         'Colin Trevorrow': 
           { 
             'Jurassic World': 56
-           },
+          },
         'J. A. Bayona': 
           { 
             'Jurassic World: Fallen Kingdom': 59 
