@@ -665,13 +665,13 @@ const astronomyPrompts = {
       let allStars = [];
       Object.values(constellations).forEach(constellation => {
         constellation.stars.forEach(star => allStars.push(star));
-      })
+      });
 
       return stars.filter(star => {
         if (allStars.includes(star.name)) {
           return star;
         }
-      })
+      });
     };
     return result();
 
@@ -718,11 +718,17 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const sortedStars = stars.sort((a, b) => a.visualMagnitude - b.visualMagnitude);
+    const result = sortedStars.reduce((acc, star) => {
+      if (star.constellation.length > 0) {
+        acc.push(star.constellation);
+      }
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   }
 };
 
