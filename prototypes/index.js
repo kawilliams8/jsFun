@@ -643,7 +643,7 @@ const bossPrompts = {
 
 
 
-// DATASET: constellations, stars } from ./datasets/astronomy
+// DATASET: constellations, stars from ./datasets/astronomy
 const astronomyPrompts = {
   starsInConstellations() {
     // Return an array of all the stars that appear in any of the constellations
@@ -693,7 +693,10 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.reduce((acc, star) => {
+      !acc[star.color] ? acc[star.color] = [star] : acc[star.color].push(star);
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
