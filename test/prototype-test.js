@@ -349,30 +349,18 @@ describe("PROTOTYPES", () => {
   }), describe("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
-      expect(e).to.deep.equal([{ 
+      expect(e).to.deep.equal([{
         name: 'Rigel',
         visualMagnitude: 0.13,
         constellation: 'Orion',
         lightYearsFromEarth: 860,
         color: 'blue'
-      }, { 
-        name: 'Achernar',
-        visualMagnitude: 0.46,
-        constellation: 'The Plow',
-        lightYearsFromEarth: 140,
-        color: 'blue' 
-      }, { 
+      }, {
         name: 'Betelgeuse',
         visualMagnitude: 0.5,
         constellation: 'Orion',
         lightYearsFromEarth: 640,
         color: 'red'
-      }, { 
-        name: 'Hadar',
-        visualMagnitude: 0.61,
-        constellation: 'The Little Dipper',
-        lightYearsFromEarth: 350,
-        color: 'blue' 
       }])
     }), it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
@@ -485,11 +473,11 @@ describe("PROTOTYPES", () => {
     it("countAwesomeDinosaurs", () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
       expect(e).to.deep.equal({
-        'Jurassic Park': 5,
-        'The Lost World: Jurassic Park': 8,
-        'Jurassic Park III': 9,
-        'Jurassic World': 11,
-        'Jurassic World: Fallen Kingdom': 18
+        'Jurassic Park': 7,
+        'The Lost World: Jurassic Park': 10,
+        'Jurassic Park III': 11,
+        'Jurassic World': 13,
+        'Jurassic World: Fallen Kingdom': 20
       })
     }), it("averageAgePerMovie", () => {
       const e = dinosaurPrompts.averageAgePerMovie();

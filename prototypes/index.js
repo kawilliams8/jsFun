@@ -755,11 +755,16 @@ const ultimaPrompts = {
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.reduce((acc, char) => {
+      char.weapons.forEach(weapon => {
+        acc += weapons[weapon].damage;
+      });
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Can also be achieved with Object.entries(weapons), but either can be searched with bracket notation for each weapon
   },
 
   charactersByTotal() {
@@ -767,11 +772,23 @@ const ultimaPrompts = {
     // Return the sum damage and total range for each character as an object. 
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.map(char => {
+      let dam = char.weapons.reduce((acc, weap) => {
+        acc += weapons[weap].damage;
+        return acc;
+      }, 0);
+      let ran = char.weapons.reduce((acc, weap) => {
+        acc += weapons[weap].range;
+        return acc;
+      }, 0);
+      return { [char.name]: { damage: dam, range: ran } };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Need to map through characters to create an array, with one obj per character
+    // Within each character iteration, iterate over their weapons array
+    // Reduce their stats, assign to variable, and use in the map's returned objs
   },
 };
 
@@ -804,7 +821,11 @@ const dinosaurPrompts = {
     //   'Jurassic World: Fallen Kingdom': 18
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = movies.reduce((acc, movie) => {
+      let dinos = movie.dinos.length;
+      acc[movie.title] = dinos
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
